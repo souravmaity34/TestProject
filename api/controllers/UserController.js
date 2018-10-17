@@ -27,7 +27,6 @@ module.exports = {
       User.findOne({
         email: reqData.email
       }).then((user) => {
-        console.log(user)
         if (user) {
           return res.ok({
             status: -1,
@@ -134,8 +133,8 @@ module.exports = {
           result: "Invalid Email"
         })
       }
-      return bcrypt.compare(reqData.password, found.password).then((conpareResult) => {
-        if (!conpareResult) {
+      return bcrypt.compare(reqData.password, found.password).then((compareResult) => {
+        if (!compareResult) {
           return res.ok({
             status: -1,
             result: "Wrong Password"
